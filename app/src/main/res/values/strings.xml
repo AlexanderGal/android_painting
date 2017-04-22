@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Painter</string>
+    <string name="circle">Circle</string>
+    <string name="rect">Rect</string>
+    <string name="line">Line</string>
+    <string name="clear">Clear</string>
+</resources>

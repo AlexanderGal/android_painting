@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#00BCD4"
+    tools:context="com.sbthomework.painter.MainActivity">
+
+    <com.sbthomework.painter.PainterView
+        android:id="@+id/paint_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttonPanel"
+        android:layout_margin="@dimen/painter_margin"
+        android:background="@color/painter_Background" />
+
+    <include
+        android:id="@+id/buttonPanel"
+        layout="@layout/buttom_pannel" />
+</RelativeLayout>
