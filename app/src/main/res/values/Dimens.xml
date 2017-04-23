@@ -2,6 +2,12 @@
 <resources>
 
     <dimen name="painter_margin">12dp</dimen>
-    <dimen name="button_layout_height">40dp</dimen>
+    <dimen name="button_layout_height">48dp</dimen>
     <dimen name="default_paint_width">8dp</dimen>
+    <dimen name="button_padding">8dp</dimen>
+    <dimen name="button_margin">4dp</dimen>
+    <dimen name="switch_width">40dp</dimen>
+    <dimen name="switch_height">20dp</dimen>
+    <dimen name="switch_margin">10dp</dimen>
+    <dimen name="switch_label_height">27dp</dimen>
 </resources>

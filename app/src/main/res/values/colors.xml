@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#2e397d</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="painter_Background">#fff</color>
+    <color name="text_color_button">#fff</color>
+    <color name="button_gradient_start_background">#304079</color>
+    <color name="button_gradient_center_background">#4775b1</color>
+    <color name="button_gradient_end_background">#5792da</color>
+    <color name="main_activity_backgroundcolor">#67a2e9</color>
+
 
     <array name="paint_colors">
         <item>#f44336</item>
