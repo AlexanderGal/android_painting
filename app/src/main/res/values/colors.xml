@@ -2,12 +2,12 @@
 <resources>
     <color name="colorPrimary">#2e397d</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#40d6ff</color>
     <color name="painter_Background">#fff</color>
-    <color name="text_color_button">#fff</color>
-    <color name="button_gradient_start_background">#304079</color>
-    <color name="button_gradient_center_background">#4775b1</color>
-    <color name="button_gradient_end_background">#5792da</color>
+    <color name="text_color_button">#f7f5f4</color>
+    <color name="button_gradient_start_background">#2e397d</color>
+    <color name="button_gradient_center_background">#3479c9</color>
+    <color name="button_gradient_end_background">#2e397d</color>
     <color name="main_activity_backgroundcolor">#67a2e9</color>
 
 
@@ -17,5 +17,10 @@
         <item>#3f51b5</item>
         <item>#ffc107</item>
         <item>#607d8b</item>
+        <item>#a1e43b</item>
+        <item>#eceaad</item>
+        <item>#e16d86</item>
+        <item>#adcfff</item>
+        <item>#fc722e</item>
     </array>
 </resources>

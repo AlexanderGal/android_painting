@@ -19,7 +19,8 @@
         android:layout_alignParentRight="true"
         android:layout_width="@dimen/switch_width"
         android:layout_height="@dimen/switch_height"
-        android:layout_marginLeft="@dimen/switch_margin"/>
+        android:layout_marginLeft="@dimen/switch_margin"
+        android:layout_marginRight="@dimen/switch_margin"/>
 
     <TextView
         android:id="@+id/switchModeLabel"
