@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#40d6ff</color>
     <color name="painter_Background">#fff</color>
-    <color name="text_color_button">#f7f5f4</color>
+    <color name="text_color_button">#303F9F</color>
     <color name="button_gradient_start_background">#2e397d</color>
     <color name="button_gradient_center_background">#3479c9</color>
     <color name="button_gradient_end_background">#2e397d</color>

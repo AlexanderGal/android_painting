@@ -2,69 +2,121 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/button_layout_height"
-    android:layout_marginBottom="@dimen/button_margin"
-    android:layout_marginLeft="@dimen/button_margin"
-    android:layout_marginRight="@dimen/button_margin"
-    android:layout_alignParentBottom="true">
+    android:layout_height="@dimen/button_layout_height_parent"
+    android:layout_alignParentBottom="true"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/choose_circle_button"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/button_margin"
-        android:layout_weight="1"
-        android:background="@drawable/button_rect_background"
-        android:drawableLeft="@drawable/vector_circle"
-        android:gravity="center"
-        android:padding="@dimen/button_padding"
-        android:text="@string/circle"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textColor="@color/text_color_button"
-        tools:text="Circle" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_layout_height"
+        android:layout_marginBottom="@dimen/button_margin"
+        android:layout_marginLeft="@dimen/button_margin"
+        android:layout_marginRight="@dimen/button_margin">
 
-    <TextView
-        android:id="@+id/choose_rect_button"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/button_margin"
-        android:layout_weight="1"
-        android:background="@drawable/button_rect_background"
-        android:drawableLeft="@drawable/vector_rectangle"
-        android:gravity="center"
-        android:padding="@dimen/button_padding"
-        android:text="@string/rect"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textColor="@color/text_color_button"
-        tools:text="Rect" />
+        <TextView
+            android:id="@+id/choose_circle_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/button_margin"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/vector_circle"
+            android:gravity="center"
+            android:padding="@dimen/button_padding"
+            android:text="@string/circle"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/text_color_button"
+            tools:text="Circle" />
 
-    <TextView
-        android:id="@+id/choose_line_button"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/button_margin"
-        android:layout_weight="1"
-        android:background="@drawable/button_rect_background"
-        android:drawableLeft="@drawable/vector_line"
-        android:gravity="center"
-        android:padding="@dimen/button_padding"
-        android:text="@string/line"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textColor="@color/text_color_button"
-        tools:text="Line" />
+        <TextView
+            android:id="@+id/choose_rect_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/button_margin"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/vector_rectangle"
+            android:gravity="center"
+            android:padding="@dimen/button_padding"
+            android:text="@string/rect"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/text_color_button"
+            tools:text="Rect" />
 
-    <TextView
-        android:id="@+id/clear_button"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/button_margin"
-        android:layout_weight="1"
-        android:background="@drawable/button_rect_background"
-        android:drawableLeft="@drawable/close_outline"
-        android:gravity="center"
-        android:padding="@dimen/button_padding"
-        android:text="@string/clear"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textColor="@color/text_color_button"
-        tools:text="Clear" />
+        <TextView
+            android:id="@+id/choose_line_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/button_margin"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/vector_line"
+            android:gravity="center"
+            android:padding="@dimen/button_padding"
+            android:text="@string/line"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/text_color_button"
+            tools:text="Line" />
+
+        <TextView
+            android:id="@+id/clear_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/button_margin"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/close_outline"
+            android:gravity="center"
+            android:padding="@dimen/button_padding"
+            android:text="@string/clear"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/text_color_button"
+            tools:text="Clear" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_layout_height"
+        android:layout_marginBottom="@dimen/button_margin"
+        android:layout_marginLeft="@dimen/button_margin"
+        android:layout_marginRight="@dimen/button_margin">
+
+        <TextView
+            android:id="@+id/choose_text_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/button_margin"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/comment_text_outline"
+            android:gravity="center"
+            android:padding="@dimen/button_padding"
+            android:text="@string/text"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/text_color_button"
+            tools:text="Text" />
+
+        <TextView
+            android:id="@+id/choose_color"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/button_margin"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/camera_iris"
+            android:gravity="center"
+            android:padding="@dimen/button_padding"
+            android:text="@string/color"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/text_color_button"
+            tools:text="Color" />
+
+        <TextView
+            android:id="@+id/choose_eraser"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/button_margin"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/eraser"
+            android:gravity="center"
+            android:padding="@dimen/button_padding"
+            android:text="@string/eraser"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/text_color_button"
+            tools:text="Eraser" />
+    </LinearLayout>
 </LinearLayout>

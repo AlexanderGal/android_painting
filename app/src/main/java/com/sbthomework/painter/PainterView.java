@@ -23,18 +23,21 @@ public class PainterView extends View {
     public static final int LINE_DRAW = 0;
     public static final int RECT_DRAW = 1;
     public static final int CIRCLE_DRAW = 2;
-    public static final int MULTY_MODE = 0;
-    public static final int ERASE_MODE = 1;
-    private int currentMode = 0;
+    public static final int ERASER = 3;
 
     private Bitmap mBitmap;
 
     private Canvas mBitmapCanvas;
+    private Bitmap sBitmap;
+
+    private Canvas sBitmapCanvas;
     private Paint[] mPredefinedPaints;
     private int mNextPaint = 0;
     private PointF point;
 
     private Paint mEditModePaint = new Paint();
+    private Paint paint = null;
+    private Paint eraser = new Paint();
 
     private int currentCanvasType;
     private SparseArray<Paint> mPaints = new SparseArray<>(10);
@@ -77,6 +80,11 @@ public class PainterView extends View {
                 mPredefinedPaints[i] = paint;
             }
         }
+        eraser.setAntiAlias(true);
+        eraser.setColor(Color.WHITE);
+        eraser.setStrokeJoin(Paint.Join.ROUND);
+        eraser.setStrokeCap(Paint.Cap.SQUARE);
+        eraser.setStrokeWidth(getResources().getDimension(R.dimen.eraser_width));
     }
 
     @Override
@@ -92,6 +100,16 @@ public class PainterView extends View {
                 mBitmap.recycle();
             }
 
+            Bitmap sbitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+            Canvas scanvas = new Canvas(sbitmap);
+
+            if (sBitmap != null) {
+                scanvas.drawBitmap(sBitmap, 0, 0, null);
+                sBitmap.recycle();
+            }
+
+            sBitmap = sbitmap;
+            sBitmapCanvas = scanvas;
             mBitmap = bitmap;
             mBitmapCanvas = canvas;
         }
@@ -99,7 +117,6 @@ public class PainterView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_POINTER_DOWN:
@@ -109,7 +126,7 @@ public class PainterView extends View {
                 mNextPaint++;
                 return true;
             case MotionEvent.ACTION_MOVE:
-                Paint paint = mPaints.get(event.getPointerId(event.getActionIndex()));
+                paint = mPaints.get(event.getPointerId(event.getActionIndex()));
 
                 if (point != null) {
                     float x = event.getX();
@@ -120,6 +137,13 @@ public class PainterView extends View {
                 return true;
             case MotionEvent.ACTION_POINTER_UP:
             case MotionEvent.ACTION_UP:
+
+                if (point != null && currentCanvasType != LINE_DRAW && currentCanvasType != ERASER) {
+                    float x = event.getX();
+                    float y = event.getY();
+                    sdrawCurrentType(point.x, point.y, x, y, paint);
+                }
+                invalidate();
                 return true;
         }
 
@@ -127,7 +151,7 @@ public class PainterView extends View {
     }
 
     private void drawCurrentType(float startX, float startY, float endX, float endY, Paint paint) {
-        if (currentCanvasType != 0 && currentMode == 1) {
+        if (currentCanvasType != LINE_DRAW && currentCanvasType != ERASER) {
             clear();
         }
         switch (currentCanvasType) {
@@ -139,12 +163,32 @@ public class PainterView extends View {
                     mBitmapCanvas.drawOval(startX, startY, endX, endY, paint);
                     break;
                 }
-            default:
-            case LINE_DRAW:
-                mBitmapCanvas.drawLine(startX, startY, endX, endY, paint);
+            case ERASER:
+                mBitmapCanvas.drawLine(startX, startY, endX, endY, eraser);
+                sBitmapCanvas.drawLine(startX, startY, endX, endY, eraser);
                 point.x = endX;
                 point.y = endY;
                 break;
+            default:
+            case LINE_DRAW:
+                mBitmapCanvas.drawLine(startX, startY, endX, endY, paint);
+                sBitmapCanvas.drawLine(startX, startY, endX, endY, paint);
+                point.x = endX;
+                point.y = endY;
+                break;
+        }
+    }
+
+    private void sdrawCurrentType(float startX, float startY, float endX, float endY, Paint paint) {
+        switch (currentCanvasType) {
+            case RECT_DRAW:
+                sBitmapCanvas.drawRect(startX, startY, endX, endY, paint);
+                break;
+            case CIRCLE_DRAW:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    sBitmapCanvas.drawOval(startX, startY, endX, endY, paint);
+                    break;
+                }
         }
     }
 
@@ -155,6 +199,7 @@ public class PainterView extends View {
                     (getHeight() / 10) * 9, mEditModePaint);
         }
 
+        canvas.drawBitmap(sBitmap, 0, 0, null);
         canvas.drawBitmap(mBitmap, 0, 0, null);
     }
 
@@ -163,13 +208,14 @@ public class PainterView extends View {
         invalidate();
     }
 
+    public void sClear() {
+        sBitmapCanvas.drawColor(Color.BLACK, PorterDuff.Mode.CLEAR);
+        invalidate();
+    }
+
     public void setCurrentCanvasType(int currentCanvasType) {
 
         this.currentCanvasType = currentCanvasType;
-    }
-
-    public void setMode(int mode) {
-      currentMode = mode;
     }
 }
 

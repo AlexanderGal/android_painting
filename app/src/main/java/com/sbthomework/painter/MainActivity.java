@@ -3,9 +3,6 @@ package com.sbthomework.painter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,7 +10,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView rectButton;
     private TextView cirleButton;
     private TextView lineButton;
-    private Switch modeSwitch;
+    private TextView eraserButton;
+    private TextView colorButton;
+    private TextView textButton;
     private PainterView painterView;
 
     @Override
@@ -26,16 +25,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void layoutElementsOnClickListners() {
-        modeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    painterView.setMode(PainterView.ERASE_MODE);
-                } else {
-                    painterView.setMode(PainterView.MULTY_MODE);
-                }
-            }
-        });
 
         clearButton.setOnClickListener(new View.OnClickListener()
 
@@ -43,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 painterView.clear();
+                painterView.sClear();
             }
         });
 
@@ -72,14 +62,44 @@ public class MainActivity extends AppCompatActivity {
                 painterView.setCurrentCanvasType(PainterView.LINE_DRAW);
             }
         });
+
+        eraserButton.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick(View v) {
+                painterView.setCurrentCanvasType(PainterView.ERASER);
+            }
+        });
+
+        textButton.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick(View v) {
+                painterView.setCurrentCanvasType(PainterView.LINE_DRAW);
+            }
+        });
+
+        colorButton.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick(View v) {
+                painterView.setCurrentCanvasType(PainterView.LINE_DRAW);
+            }
+        });
     }
 
     private void layoutElementInit() {
-        modeSwitch = (Switch) findViewById(R.id.switchMode);
         clearButton = (TextView) findViewById(R.id.clear_button);
         rectButton = (TextView) findViewById(R.id.choose_rect_button);
         cirleButton = (TextView) findViewById(R.id.choose_circle_button);
         lineButton = (TextView) findViewById(R.id.choose_line_button);
+        textButton = (TextView) findViewById(R.id.choose_text_button);
+        colorButton = (TextView) findViewById(R.id.choose_color);
+        eraserButton = (TextView) findViewById(R.id.choose_eraser);
         painterView = (PainterView) findViewById(R.id.paint_view);
+
     }
 }

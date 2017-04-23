@@ -5,4 +5,7 @@
     <string name="line">Line</string>
     <string name="clear">Clear</string>
     <string name="switch_mode">Switch mode</string>
+    <string name="text">Text</string>
+    <string name="color">Color</string>
+    <string name="eraser">Eraser</string>
 </resources>
