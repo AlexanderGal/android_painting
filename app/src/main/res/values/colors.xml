@@ -301,7 +301,6 @@
         <item>@color/md_brown_500</item>
         <item>@color/md_grey_500</item>
         <item>@color/md_blue_grey_500</item>
-        <item>@color/md_white</item>
     </array>
 
     <array name="demo_colors_expanded">

@@ -9,11 +9,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.PorterDuff;
-import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,7 +22,6 @@ public class PainterView extends View {
     public static final int CIRCLE_DRAW = 2;
     public static final int ERASER = 3;
     public static final int DRAWABLE = 4;
-    public static final int DRAWABLE_CIRCLE_DRAW = 5;
     private Drawable drawable;
 
     private Bitmap mBitmap;
@@ -42,7 +39,6 @@ public class PainterView extends View {
     private Paint eraser = new Paint();
 
     private int currentCanvasType;
-    private int drawableType = 0;
 
     private SparseArray<Paint> mPaints = new SparseArray<>(10);
 
@@ -71,7 +67,7 @@ public class PainterView extends View {
         if (getRootView().isInEditMode()) {
             mEditModePaint.setColor(Color.MAGENTA);
         } else {
-            TypedArray ta = getResources().obtainTypedArray(R.array.paint_colors);
+            TypedArray ta = getResources().obtainTypedArray(R.array.demo_colors);
             mPredefinedPaints = new Paint[ta.length()];
 
             for (int i = 0; i < ta.length(); i++) {
