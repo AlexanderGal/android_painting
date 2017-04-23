@@ -9,8 +9,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.PorterDuff;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,7 +23,9 @@ public class PainterView extends View {
     public static final int RECT_DRAW = 1;
     public static final int CIRCLE_DRAW = 2;
     public static final int ERASER = 3;
+    public static final int DRAWABLE = 4;
 
+    private Drawable drawable;
     private Bitmap mBitmap;
 
     private Canvas mBitmapCanvas;
@@ -81,6 +86,11 @@ public class PainterView extends View {
         eraser.setStrokeJoin(Paint.Join.ROUND);
         eraser.setStrokeCap(Paint.Cap.SQUARE);
         eraser.setStrokeWidth(getResources().getDimension(R.dimen.eraser_width));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            drawable = getResources().getDrawable(R.drawable.rect_drawable,null);
+        }
+
     }
 
     @Override
@@ -151,6 +161,9 @@ public class PainterView extends View {
             clear();
         }
         switch (currentCanvasType) {
+            case DRAWABLE:
+                drawableDirectionDraw(startX,startY,endX,endY,mBitmapCanvas);
+                break;
             case RECT_DRAW:
                 mBitmapCanvas.drawRect(startX, startY, endX, endY, paint);
                 break;
@@ -175,8 +188,31 @@ public class PainterView extends View {
         }
     }
 
+    private void drawableDirectionDraw(float startX, float startY, float endX, float endY, Canvas canvas) {
+        int iStartX = (int) startX;
+        int iStartY = (int) startY;
+        int iEndX = (int) endX;
+        int iEndY = (int) endY;
+        int tmp;
+        if (iStartX > iEndX ){
+            tmp = iEndX;
+            iEndX = iStartX;
+            iStartX = tmp;
+        }
+        if (iStartY > iEndY){
+            tmp = iEndY;
+            iEndY = iStartY;
+            iStartY = tmp;
+        }
+        drawable.setBounds(iStartX,iStartY,iEndX,iEndY);
+        drawable.draw(canvas);
+    }
+
     private void sdrawCurrentType(float startX, float startY, float endX, float endY, Paint paint) {
         switch (currentCanvasType) {
+            case DRAWABLE:
+                drawableDirectionDraw(startX,startY,endX,endY,sBitmapCanvas);
+                break;
             case RECT_DRAW:
                 sBitmapCanvas.drawRect(startX, startY, endX, endY, paint);
                 break;

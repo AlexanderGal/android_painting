@@ -8,4 +8,5 @@
     <string name="text">Text</string>
     <string name="color">Color</string>
     <string name="eraser">Eraser</string>
+    <string name="drawable">Drawable</string>
 </resources>

@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView lineButton;
     private TextView eraserButton;
     private TextView colorButton;
-//    private TextView textButton;
+    private TextView drawableButton;
     private PainterView painterView;
 
     @Override
@@ -71,20 +71,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        textButton.setOnClickListener(new View.OnClickListener()
-//
-//        {
-//            @Override
-//            public void onClick(View v) {
-//                painterView.setCurrentCanvasType(PainterView.LINE_DRAW);
-//            }
-//        });
+        drawableButton.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick(View v) {
+                painterView.setCurrentCanvasType(PainterView.DRAWABLE);
+            }
+        });
 
         colorButton.setOnClickListener(new View.OnClickListener()
 
         {
             @Override
             public void onClick(View v) {
+
                 painterView.setCurrentCanvasType(PainterView.LINE_DRAW);
             }
         });
@@ -95,10 +96,11 @@ public class MainActivity extends AppCompatActivity {
         rectButton = (TextView) findViewById(R.id.choose_rect_button);
         cirleButton = (TextView) findViewById(R.id.choose_circle_button);
         lineButton = (TextView) findViewById(R.id.choose_line_button);
-//        textButton = (TextView) findViewById(R.id.choose_text_button);
+        drawableButton = (TextView) findViewById(R.id.choose_drawable);
         colorButton = (TextView) findViewById(R.id.choose_color);
         eraserButton = (TextView) findViewById(R.id.choose_eraser);
         painterView = (PainterView) findViewById(R.id.paint_view);
 
     }
+
 }

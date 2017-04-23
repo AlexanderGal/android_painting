@@ -77,19 +77,19 @@
         android:layout_marginLeft="@dimen/button_margin"
         android:layout_marginRight="@dimen/button_margin">
 
-        <!--<TextView-->
-        <!--android:id="@+id/choose_text_button"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_margin="@dimen/button_margin"-->
-        <!--android:layout_weight="1"-->
-        <!--android:drawableLeft="@drawable/comment_text_outline"-->
-        <!--android:gravity="center"-->
-        <!--android:padding="@dimen/button_padding"-->
-        <!--android:text="@string/text"-->
-        <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"-->
-        <!--android:textColor="@color/text_color_button"-->
-        <!--tools:text="Text" />-->
+        <TextView
+        android:id="@+id/choose_drawable"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/button_margin"
+        android:layout_weight="1"
+        android:drawableLeft="@drawable/drawing"
+        android:gravity="center"
+        android:padding="@dimen/button_padding"
+        android:text="@string/drawable"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textColor="@color/text_color_button"
+        tools:text="Drawable" />
 
         <TextView
             android:id="@+id/choose_color"
@@ -119,4 +119,7 @@
             android:textColor="@color/text_color_button"
             tools:text="Clear" />
     </LinearLayout>
+    <com.thebluealliance.spectrum.SpectrumPalette
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"/>
 </LinearLayout>
