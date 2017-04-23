@@ -2,7 +2,11 @@ package com.sbthomework.painter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -12,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView lineButton;
     private TextView eraserButton;
     private TextView colorButton;
-    private TextView drawableButton;
+    private Spinner drawableButton;
     private PainterView painterView;
 
     @Override
@@ -71,12 +75,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        drawableButton.setOnClickListener(new View.OnClickListener()
 
-        {
+        drawableButton.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(id==0){
+                    painterView.setDrawable(R.drawable.rect_drawable);
+                }else {
+                    painterView.setDrawable(R.drawable.circle_drawable);
+                }
                 painterView.setCurrentCanvasType(PainterView.DRAWABLE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+//                painterView.setCurrentDrawableType(parent.getFirstVisiblePosition());
             }
         });
 
@@ -96,10 +109,16 @@ public class MainActivity extends AppCompatActivity {
         rectButton = (TextView) findViewById(R.id.choose_rect_button);
         cirleButton = (TextView) findViewById(R.id.choose_circle_button);
         lineButton = (TextView) findViewById(R.id.choose_line_button);
-        drawableButton = (TextView) findViewById(R.id.choose_drawable);
+        drawableButton = (Spinner) findViewById(R.id.choose_drawable);
         colorButton = (TextView) findViewById(R.id.choose_color);
         eraserButton = (TextView) findViewById(R.id.choose_eraser);
         painterView = (PainterView) findViewById(R.id.paint_view);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.drawable_select, R.layout.drawable_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        drawableButton.setAdapter(adapter);
 
     }
 

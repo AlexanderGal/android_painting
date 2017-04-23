@@ -9,4 +9,8 @@
     <string name="color">Color</string>
     <string name="eraser">Eraser</string>
     <string name="drawable">Drawable</string>
+    <string-array name="drawable_select">
+        <item>Rect</item>
+        <item>Circle</item>
+    </string-array>
 </resources>

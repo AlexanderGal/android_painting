@@ -24,23 +24,26 @@ public class PainterView extends View {
     public static final int CIRCLE_DRAW = 2;
     public static final int ERASER = 3;
     public static final int DRAWABLE = 4;
-
+    public static final int DRAWABLE_CIRCLE_DRAW = 5;
     private Drawable drawable;
+
     private Bitmap mBitmap;
-
     private Canvas mBitmapCanvas;
-    private Bitmap sBitmap;
 
+    private Bitmap sBitmap;
     private Canvas sBitmapCanvas;
+
     private Paint[] mPredefinedPaints;
     private int mNextPaint = 0;
     private PointF point;
-
     private Paint mEditModePaint = new Paint();
+
     private Paint paint = null;
     private Paint eraser = new Paint();
 
     private int currentCanvasType;
+    private int drawableType = 0;
+
     private SparseArray<Paint> mPaints = new SparseArray<>(10);
 
     public PainterView(Context context) {
@@ -247,6 +250,12 @@ public class PainterView extends View {
 
     public void setCurrentCanvasType(int currentCanvasType) {
         this.currentCanvasType = currentCanvasType;
+    }
+
+    public void setDrawable(int drawableType){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            drawable = getResources().getDrawable(drawableType,null);
+        }
     }
 }
 
