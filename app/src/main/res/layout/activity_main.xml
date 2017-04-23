@@ -14,23 +14,6 @@
         android:layout_margin="@dimen/painter_margin"
         android:background="@color/painter_Background" />
 
-    <!--<Switch-->
-        <!--android:id="@+id/switchMode"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_width="@dimen/switch_width"-->
-        <!--android:layout_height="@dimen/switch_height"-->
-        <!--android:layout_marginLeft="@dimen/switch_margin"-->
-        <!--android:layout_marginRight="@dimen/switch_margin"/>-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/switchModeLabel"-->
-        <!--android:layout_toLeftOf="@id/switchMode"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="@dimen/switch_label_height"-->
-        <!--android:gravity="center"-->
-        <!--android:text="@string/switch_mode"-->
-        <!--tools:text="Switch mode" />-->
-
     <include
         android:id="@+id/buttonPanel"
         layout="@layout/buttom_pannel" />

@@ -15,10 +15,6 @@ import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.View;
 
-/**
- * Created by user on 22.04.2017.
- */
-
 public class PainterView extends View {
     public static final int LINE_DRAW = 0;
     public static final int RECT_DRAW = 1;
@@ -214,7 +210,6 @@ public class PainterView extends View {
     }
 
     public void setCurrentCanvasType(int currentCanvasType) {
-
         this.currentCanvasType = currentCanvasType;
     }
 }

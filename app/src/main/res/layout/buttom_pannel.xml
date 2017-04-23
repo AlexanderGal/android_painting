@@ -56,18 +56,18 @@
             tools:text="Line" />
 
         <TextView
-            android:id="@+id/clear_button"
+            android:id="@+id/choose_eraser"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/button_margin"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/close_outline"
+            android:drawableLeft="@drawable/eraser"
             android:gravity="center"
             android:padding="@dimen/button_padding"
-            android:text="@string/clear"
+            android:text="@string/eraser"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:textColor="@color/text_color_button"
-            tools:text="Clear" />
+            tools:text="Eraser" />
     </LinearLayout>
 
     <LinearLayout
@@ -77,19 +77,19 @@
         android:layout_marginLeft="@dimen/button_margin"
         android:layout_marginRight="@dimen/button_margin">
 
-        <TextView
-            android:id="@+id/choose_text_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/button_margin"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/comment_text_outline"
-            android:gravity="center"
-            android:padding="@dimen/button_padding"
-            android:text="@string/text"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="@color/text_color_button"
-            tools:text="Text" />
+        <!--<TextView-->
+        <!--android:id="@+id/choose_text_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_margin="@dimen/button_margin"-->
+        <!--android:layout_weight="1"-->
+        <!--android:drawableLeft="@drawable/comment_text_outline"-->
+        <!--android:gravity="center"-->
+        <!--android:padding="@dimen/button_padding"-->
+        <!--android:text="@string/text"-->
+        <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"-->
+        <!--android:textColor="@color/text_color_button"-->
+        <!--tools:text="Text" />-->
 
         <TextView
             android:id="@+id/choose_color"
@@ -106,17 +106,17 @@
             tools:text="Color" />
 
         <TextView
-            android:id="@+id/choose_eraser"
+            android:id="@+id/clear_button"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/button_margin"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/eraser"
+            android:drawableLeft="@drawable/close_outline"
             android:gravity="center"
             android:padding="@dimen/button_padding"
-            android:text="@string/eraser"
+            android:text="@string/clear"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:textColor="@color/text_color_button"
-            tools:text="Eraser" />
+            tools:text="Clear" />
     </LinearLayout>
 </LinearLayout>
