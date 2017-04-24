@@ -30,17 +30,19 @@ public class PainterView extends View {
     private Bitmap sBitmap;
     private Canvas sBitmapCanvas;
 
-    private Paint[] mPredefinedPaints;
-    private int mNextPaint = 0;
+//    private Paint[] mPredefinedPaints;
+
+//    private int mNextPaint = 0;
     private PointF point;
     private Paint mEditModePaint = new Paint();
 
+//    private Paint mainPaint = null;
     private Paint paint = null;
     private Paint eraser = new Paint();
 
     private int currentCanvasType;
 
-    private SparseArray<Paint> mPaints = new SparseArray<>(10);
+//    private SparseArray<Paint> mPaints = new SparseArray<>(10);
 
     public PainterView(Context context) {
         super(context);
@@ -66,20 +68,29 @@ public class PainterView extends View {
     private void init() {
         if (getRootView().isInEditMode()) {
             mEditModePaint.setColor(Color.MAGENTA);
-        } else {
-            TypedArray ta = getResources().obtainTypedArray(R.array.demo_colors);
-            mPredefinedPaints = new Paint[ta.length()];
-
-            for (int i = 0; i < ta.length(); i++) {
-                Paint paint = new Paint();
-                paint.setAntiAlias(true);
-                paint.setColor(ta.getColor(i, 0));
-                paint.setStrokeCap(Paint.Cap.ROUND);
-                paint.setStrokeJoin(Paint.Join.ROUND);
-                paint.setStrokeWidth(getResources().getDimension(R.dimen.default_paint_width));
-                mPredefinedPaints[i] = paint;
-            }
         }
+//        else {
+////            TypedArray ta = getResources().obtainTypedArray(R.array.demo_colors);
+////            mPredefinedPaints = new Paint[ta.length()];
+////
+////            for (int i = 0; i < ta.length(); i++) {
+////                Paint paint = new Paint();
+////                paint.setAntiAlias(true);
+////                paint.setColor(ta.getColor(i, 0));
+////                paint.setStrokeCap(Paint.Cap.ROUND);
+////                paint.setStrokeJoin(Paint.Join.ROUND);
+////                paint.setStrokeWidth(getResources().getDimension(R.dimen.default_paint_width));
+////                mPredefinedPaints[i] = paint;
+////            }
+//        }
+
+        paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setColor(Color.BLACK);
+        paint.setStrokeCap(Paint.Cap.ROUND);
+        paint.setStrokeJoin(Paint.Join.ROUND);
+        paint.setStrokeWidth(getResources().getDimension(R.dimen.default_paint_width));
+
         eraser.setAntiAlias(true);
         eraser.setColor(Color.WHITE);
         eraser.setStrokeJoin(Paint.Join.ROUND);
@@ -127,11 +138,11 @@ public class PainterView extends View {
             case MotionEvent.ACTION_POINTER_DOWN:
                 int pointerId = event.getPointerId(event.getActionIndex());
                 point = new PointF(event.getX(event.getActionIndex()), event.getY(event.getActionIndex()));
-                mPaints.put(pointerId, mPredefinedPaints[mNextPaint % mPredefinedPaints.length]);
-                mNextPaint++;
+//                mPaints.put(pointerId, mPredefinedPaints[mNextPaint % mPredefinedPaints.length]);
+//                mNextPaint++;
                 return true;
             case MotionEvent.ACTION_MOVE:
-                paint = mPaints.get(event.getPointerId(event.getActionIndex()));
+//                paint = mPaints.get(event.getPointerId(event.getActionIndex()));
 
                 if (point != null) {
                     float x = event.getX();
@@ -252,6 +263,10 @@ public class PainterView extends View {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             drawable = getResources().getDrawable(drawableType,null);
         }
+    }
+
+    public void setColor(Integer color) {
+        paint.setColor(color);
     }
 }
 

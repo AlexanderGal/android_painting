@@ -1,11 +1,14 @@
 package com.sbthomework.painter;
 
+import android.graphics.PorterDuff;
+import android.graphics.drawable.VectorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -16,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView lineButton;
     private TextView eraserButton;
     private TextView colorButton;
+    private ImageView currentImage;
     private Spinner drawableButton;
     private PainterView painterView;
 
@@ -98,8 +102,15 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-
-                painterView.setCurrentCanvasType(PainterView.LINE_DRAW);
+                HSVColorPickerDialog cpd = new HSVColorPickerDialog( MainActivity.this, 0xFF4488CC, new HSVColorPickerDialog.OnColorSelectedListener() {
+                    @Override
+                    public void colorSelected(Integer color) {
+                        currentImage.setBackgroundColor(color);
+                        painterView.setColor(color);
+                    }
+                });
+                cpd.setTitle( getString(R.string.color_select_title) );
+                cpd.show();
             }
         });
     }
@@ -112,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         drawableButton = (Spinner) findViewById(R.id.choose_drawable);
         colorButton = (TextView) findViewById(R.id.choose_color);
         eraserButton = (TextView) findViewById(R.id.choose_eraser);
+        currentImage = (ImageView) findViewById(R.id.current_color);
         painterView = (PainterView) findViewById(R.id.paint_view);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,

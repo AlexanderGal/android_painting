@@ -91,20 +91,30 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:textColor="@color/text_color_button"
             tools:text="Drawable" />
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_weight="1">
+    <ImageView
+        android:id="@+id/current_color"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:background="@color/md_black"
+        android:layout_margin="@dimen/eraser_width"/>
+    <TextView
+        android:id="@+id/choose_color"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingBottom="@dimen/eraser_width"
+        android:paddingTop="@dimen/eraser_width"
+        android:text="@string/color"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textColor="@color/text_color_button"
+        tools:text="Color" />
 
-        <TextView
-            android:id="@+id/choose_color"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/button_margin"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/camera_iris"
-            android:gravity="center"
-            android:padding="@dimen/button_padding"
-            android:text="@string/color"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="@color/text_color_button"
-            tools:text="Color" />
+</LinearLayout>
 
         <TextView
             android:id="@+id/clear_button"

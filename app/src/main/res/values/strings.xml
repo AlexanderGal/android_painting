@@ -9,6 +9,7 @@
     <string name="color">Color</string>
     <string name="eraser">Eraser</string>
     <string name="drawable">Drawable</string>
+    <string name="color_select_title">Pick a color</string>
     <string-array name="drawable_select">
         <item>Rect</item>
         <item>Circle</item>
